@@ -24,7 +24,7 @@ namespace GeekShopping.ProductApi.Migrations
 
             MySqlModelBuilderExtensions.AutoIncrementColumns(modelBuilder);
 
-            modelBuilder.Entity("GeekShopping.Models.Product", b =>
+            modelBuilder.Entity("GeekShopping.ProductApi.Models.Product", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()

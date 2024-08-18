@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GeekShopping.ProductApi.Models.Base;
 
-class BaseEntity
+public class BaseEntity
 {
     [Key]
     [Column("id")]

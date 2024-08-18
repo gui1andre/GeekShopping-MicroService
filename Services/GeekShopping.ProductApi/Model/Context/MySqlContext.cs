@@ -1,9 +1,9 @@
-using GeekShopping.Models;
+using GeekShopping.ProductApi.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace GeekShopping.ProductApi.Controllers.Context;
 
-class MySqlContext : DbContext
+public class MySqlContext : DbContext
 {
     public MySqlContext() { }
     public MySqlContext(DbContextOptions<MySqlContext> options) : base(options) { }
