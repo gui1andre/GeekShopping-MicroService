@@ -1,4 +1,5 @@
 using GeekShopping.ProductApi.Models;
+using GeekShopping.ProductApi.Models.Context;
 using Microsoft.EntityFrameworkCore;
 
 namespace GeekShopping.ProductApi.Controllers.Context;

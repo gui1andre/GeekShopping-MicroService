@@ -26,22 +26,41 @@ public class ProductRepository : IProductRepository
     public async Task<ProductVO> FindById(long id)
     {
         var product = await _context.Products.FirstOrDefaultAsync(x => x.Id == id);
-        return product;
+        return _mapper.Map<ProductVO>(product);
     }
 
-    public Task<ProductVO> Create(ProductVO vo)
+    public async Task<ProductVO> Create(ProductVO vo)
     {
-        throw new NotImplementedException();
+        var productMapped = _mapper.Map<Product>(vo);
+        var product = await _context.Products.AddAsync(productMapped);
+        await _context.SaveChangesAsync();
+        return _mapper.Map<ProductVO>(product);
     }
 
-    public Task<ProductVO> Update(ProductVO vo)
+    public async Task<ProductVO> Update(ProductVO vo)
     {
-        throw new NotImplementedException();
+        var productMapped = _mapper.Map<Product>(vo);
+        var product = _context.Products.Update(productMapped);
+        await _context.SaveChangesAsync();
+        return _mapper.Map<ProductVO>(product);
     }
 
-    public Task<bool> Delete(long id)
+    public async Task<bool> Delete(long id)
     {
-        throw new NotImplementedException();
+        try
+        {
+            var product = await _context.Products.FirstOrDefaultAsync(x => x.Id == id);
+            if (product == null) return false;
+
+            _context.Products.Remove(product);
+            await _context.SaveChangesAsync();
+            return true;
+        }
+        catch (System.Exception)
+        {
+
+            return false;
+        }
     }
 
 
