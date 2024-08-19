@@ -32,9 +32,9 @@ public class ProductRepository : IProductRepository
     public async Task<ProductVO> Create(ProductVO vo)
     {
         var productMapped = _mapper.Map<Product>(vo);
-        var product = await _context.Products.AddAsync(productMapped);
+        await _context.Products.AddAsync(productMapped);
         await _context.SaveChangesAsync();
-        return _mapper.Map<ProductVO>(product);
+        return _mapper.Map<ProductVO>(productMapped);
     }
 
     public async Task<ProductVO> Update(ProductVO vo)
@@ -42,7 +42,7 @@ public class ProductRepository : IProductRepository
         var productMapped = _mapper.Map<Product>(vo);
         var product = _context.Products.Update(productMapped);
         await _context.SaveChangesAsync();
-        return _mapper.Map<ProductVO>(product);
+        return _mapper.Map<ProductVO>(productMapped);
     }
 
     public async Task<bool> Delete(long id)

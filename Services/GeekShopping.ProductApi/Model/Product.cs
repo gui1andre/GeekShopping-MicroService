@@ -22,7 +22,7 @@ public class Product : BaseEntity
     public required string Description { get; set; }
 
     [Column("category_name")]
-    [StringLength(5)]
+    [StringLength(50)]
     public required string CategoryName { get; set; }
 
     [Column("image_url")]
