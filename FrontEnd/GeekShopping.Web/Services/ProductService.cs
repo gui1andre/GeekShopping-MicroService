@@ -8,7 +8,7 @@ namespace GeekShopping.Web.Services
     {
         private readonly HttpClient _client;
 
-        public const string BasePath = "api/v1/product";
+        public const string BasePath = "api/product";
 
         public ProductService(HttpClient client)
         {
@@ -48,7 +48,7 @@ namespace GeekShopping.Web.Services
             var response = await _client.DeleteAsync($"{BasePath}/{id}");
             if (response.IsSuccessStatusCode)
                 return await response.ReadContentAs<bool>();
-            else throw new Exception("Something went worng when calling API");
+            else throw new Exception("Something went wrong when calling API");
         }
     }
 }
